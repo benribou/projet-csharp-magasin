@@ -1,6 +1,6 @@
 ﻿namespace Magasin
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            listBox1 = new ListBox();
+            SuspendLayout();
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(12, 12);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(376, 214);
+            listBox1.TabIndex = 0;
+            // 
+            // MainWindow
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(listBox1);
+            Name = "MainWindow";
+            Text = "Form1";
+            Load += MainWindow_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox listBox1;
     }
 }
