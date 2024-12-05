@@ -37,6 +37,7 @@
             listBoxHistorique.Name = "listBoxHistorique";
             listBoxHistorique.Size = new Size(766, 289);
             listBoxHistorique.TabIndex = 0;
+            listBoxHistorique.SelectedIndexChanged += listBoxHistorique_SelectedIndexChanged;
             // 
             // HistoriqueForm
             // 

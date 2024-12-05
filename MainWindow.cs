@@ -5,6 +5,12 @@ namespace Magasin
         private List<Article> articles;
         private List<Commande> commandes = new List<Commande>();
         private Panier panier = new Panier();
+        private List<Promotion> promotions = new List<Promotion>
+        {
+            new Promotion("PROMO10", TypePromotion.Pourcentage, 10), // -10%
+            new Promotion("REDUCTION5", TypePromotion.MontantFixe, 5) // -5 €
+        };
+
 
 
         public MainWindow()
@@ -130,7 +136,6 @@ namespace Magasin
             {
                 var article = articles[listBox1.SelectedIndex];
 
-                // Demander la quantité
                 string input = Prompt.ShowDialog("Entrez la quantité :", "Ajouter au panier");
                 if (int.TryParse(input, out int quantite) && quantite > 0)
                 {

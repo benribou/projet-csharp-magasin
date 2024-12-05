@@ -23,5 +23,10 @@ namespace Magasin
                 listBoxHistorique.Items.Add(commande.ToString());
             }
         }
+
+        private void listBoxHistorique_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

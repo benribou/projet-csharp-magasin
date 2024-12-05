@@ -32,6 +32,8 @@
             lblTotal = new Label();
             btnSupprimerDuPanier = new Button();
             btnPasserCommande = new Button();
+            txtCodePromo = new TextBox();
+            btnAppliquerPromo = new Button();
             SuspendLayout();
             // 
             // listBoxPanier
@@ -62,19 +64,36 @@
             // 
             // btnPasserCommande
             // 
-            btnPasserCommande = new Button();
             btnPasserCommande.Location = new Point(12, 280);
             btnPasserCommande.Name = "btnPasserCommande";
             btnPasserCommande.Size = new Size(150, 30);
+            btnPasserCommande.TabIndex = 0;
             btnPasserCommande.Text = "Passer commande";
             btnPasserCommande.UseVisualStyleBackColor = true;
             btnPasserCommande.Click += BtnPasserCommande_Click;
-            Controls.Add(btnPasserCommande);
-
+            // 
+            // txtCodePromo
+            // 
+            txtCodePromo.Location = new Point(12, 250);
+            txtCodePromo.Name = "txtCodePromo";
+            txtCodePromo.Size = new Size(150, 23);
+            txtCodePromo.TabIndex = 1;
+            // 
+            // btnAppliquerPromo
+            // 
+            btnAppliquerPromo.Location = new Point(170, 250);
+            btnAppliquerPromo.Name = "btnAppliquerPromo";
+            btnAppliquerPromo.Size = new Size(142, 23);
+            btnAppliquerPromo.TabIndex = 0;
+            btnAppliquerPromo.Text = "Appliquer Promo";
+            btnAppliquerPromo.Click += BtnAppliquerPromo_Click;
+            Controls.Add(btnAppliquerPromo);
             // 
             // PanierForm
             // 
-            ClientSize = new Size(448, 315);
+            ClientSize = new Size(467, 336);
+            Controls.Add(btnAppliquerPromo);
+            Controls.Add(txtCodePromo);
             Controls.Add(btnPasserCommande);
             Controls.Add(btnSupprimerDuPanier);
             Controls.Add(lblTotal);
@@ -82,6 +101,7 @@
             Name = "PanierForm";
             Load += PanierForm_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -90,5 +110,7 @@
         private Label lblTotal;
         private Button btnSupprimerDuPanier;
         private Button btnPasserCommande;
+        private TextBox txtCodePromo;
+        private Button btnAppliquerPromo;
     }
 }

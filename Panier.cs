@@ -39,5 +39,22 @@ namespace Magasin
             }
             return total;
         }
+
+        public decimal AppliquerPromotion(Promotion promo)
+        {
+            decimal total = CalculerTotal();
+
+            if (promo.Type == TypePromotion.Pourcentage)
+            {
+                total -= total * (promo.Valeur / 100);
+            }
+            else if (promo.Type == TypePromotion.MontantFixe)
+            {
+                total -= promo.Valeur;
+            }
+
+            return total > 0 ? total : 0; // Évite un total négatif
+        }
+
     }
 }
