@@ -1,4 +1,5 @@
-﻿namespace Magasin
+﻿
+namespace Magasin
 {
     partial class MainWindow
     {
@@ -29,6 +30,7 @@
         private void InitializeComponent()
         {
             listBox1 = new ListBox();
+            btnAjouterArticle = new Button();
             SuspendLayout();
             // 
             // listBox1
@@ -39,20 +41,37 @@
             listBox1.Size = new Size(376, 214);
             listBox1.TabIndex = 0;
             // 
+            // btnAjouterArticle
+            // 
+            btnAjouterArticle.Location = new Point(402, 13);
+            btnAjouterArticle.Name = "btnAjouterArticle";
+            btnAjouterArticle.Size = new Size(121, 23);
+            btnAjouterArticle.TabIndex = 1;
+            btnAjouterArticle.Text = "Ajouter un article";
+            btnAjouterArticle.UseVisualStyleBackColor = true;
+            btnAjouterArticle.Click += this.BtnAjouterArticle_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAjouterArticle);
             Controls.Add(listBox1);
             Name = "MainWindow";
-            Text = "Form1";
+            Text = "Ajouter un article";
             Load += MainWindow_Load;
             ResumeLayout(false);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
 
         private ListBox listBox1;
+        private Button btnAjouterArticle;
     }
 }

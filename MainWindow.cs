@@ -30,6 +30,23 @@ namespace Magasin
             }
         }
 
+        private void BtnAjouterArticle_Click(object sender, EventArgs e)
+        {
+            using (var form = new AjoutArticleForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    var nouvelArticle = form.Tag as Article;
+                    if (nouvelArticle != null)
+                    {
+                        articles.Add(nouvelArticle);
+                        AfficherArticles();
+                    }
+                }
+            }
+        }
+
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
             AfficherArticles();
