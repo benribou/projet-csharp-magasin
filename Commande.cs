@@ -14,7 +14,7 @@ namespace Magasin
     {
         public string IdCommande { get; private set; }
         public Panier Panier { get; private set; }
-        public Promotion Promotion { get; private set; } // Promotion appliquée
+        public Promotion Promotion { get; private set; }
         public EtatCommande Etat { get; private set; }
 
         public Commande(Panier panier, Promotion promotion = null)

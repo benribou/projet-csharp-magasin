@@ -12,7 +12,6 @@ namespace Magasin
         };
 
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -85,7 +84,6 @@ namespace Magasin
         }
 
 
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool isItemSelected = listBox1.SelectedIndex != -1;
@@ -94,7 +92,6 @@ namespace Magasin
             btnSupprimerArticle.Visible = isItemSelected;
             BtnAjouterAuPanier.Visible = isItemSelected;
         }
-
 
 
         private void BtnSupprimerArticle_Click(object sender, EventArgs e)
@@ -112,7 +109,6 @@ namespace Magasin
                 }
             }
         }
-
 
 
         private void BtnVoirPanier_Click(object sender, EventArgs e)

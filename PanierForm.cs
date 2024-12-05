@@ -34,7 +34,6 @@ namespace Magasin
 
             decimal total = panier.CalculerTotal();
 
-            // Appliquer la promotion active
             if (promotionActive != null)
             {
                 total = panier.AppliquerPromotion(promotionActive);
@@ -66,19 +65,14 @@ namespace Magasin
                 return;
             }
 
-            // Créer une nouvelle commande avec la promotion active
             var commande = new Commande(panier, promotionActive);
 
-            // Valider la commande
             commande.ValiderCommande();
 
-            // Notifier MainWindow pour ajouter la commande à l'historique
             CommandeValidee?.Invoke(commande);
 
-            // Afficher le récapitulatif de la commande
             MessageBox.Show(commande.ToString(), "Commande validée", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Réinitialiser le panier et la promotion
             panier = new Panier();
             promotionActive = null;
             AfficherPanier();

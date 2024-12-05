@@ -53,7 +53,7 @@ namespace Magasin
                 total -= promo.Valeur;
             }
 
-            return total > 0 ? total : 0; // Évite un total négatif
+            return total > 0 ? total : 0;
         }
 
     }
