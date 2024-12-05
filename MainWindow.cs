@@ -46,6 +46,66 @@ namespace Magasin
             }
         }
 
+        private void BtnModifierArticle_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                // Récupérer l'article sélectionné
+                var article = articles[listBox1.SelectedIndex];
+
+                // Ouvrir le formulaire de modification avec les données de l'article
+                using (var form = new AjoutArticleForm(article))
+                {
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        // Récupérer les nouvelles données de l'article
+                        var updatedArticle = form.Tag as Article;
+                        if (updatedArticle != null)
+                        {
+                            article.Nom = updatedArticle.Nom;
+                            article.Prix = updatedArticle.Prix;
+                            article.Quantite = updatedArticle.Quantite;
+
+                            // Mettre à jour l'affichage
+                            AfficherArticles();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un article à modifier.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isItemSelected = listBox1.SelectedIndex != -1;
+
+            btnModifierArticle.Visible = isItemSelected;
+            btnSupprimerArticle.Visible = isItemSelected;
+        }
+
+
+
+        private void BtnSupprimerArticle_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                var article = articles[listBox1.SelectedIndex];
+                var result = MessageBox.Show($"Êtes-vous sûr de vouloir supprimer l'article : {article.Nom} ?", "Supprimer",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    articles.RemoveAt(listBox1.SelectedIndex);
+                    AfficherArticles();
+                }
+            }
+        }
+
 
         private void MainWindow_Load(object sender, EventArgs e)
         {

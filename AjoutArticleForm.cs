@@ -5,14 +5,25 @@ namespace Magasin
 {
     public partial class AjoutArticleForm : Form
     {
-
         public AjoutArticleForm()
         {
             InitializeComponent();
         }
 
+        // Nouveau constructeur pour pré-remplir les champs
+        public AjoutArticleForm(Article article) : this()
+        {
+            if (article != null)
+            {
+                textNom.Text = article.Nom;
+                txtPrix.Text = article.Prix.ToString();
+                txtQuantite.Text = article.Quantite.ToString();
+            }
+        }
+
         private void btnAjouter_Click(object sender, EventArgs e)
         {
+            // Validation des données saisies
             if (string.IsNullOrWhiteSpace(textNom.Text))
             {
                 MessageBox.Show("Veuillez entrer un nom valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -31,6 +42,7 @@ namespace Magasin
                 return;
             }
 
+            // Retourner les données dans la propriété Tag
             this.Tag = new Article(textNom.Text, prix, quantite);
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -42,4 +54,6 @@ namespace Magasin
             this.Close();
         }
     }
+
+
 }
