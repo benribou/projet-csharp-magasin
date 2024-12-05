@@ -10,7 +10,7 @@ Application Windows Forms en C# pour gérer un magasin avec des articles, un pan
 - Passer une commande et afficher l'historique.
 
 ## Installation
-1. Clonez le dépôt : `git clone https://github.com/votre-utilisateur/magasin.git`
+1. Clonez le dépôt : `https://github.com/benribou/projet-csharp-magasin.git`
 2. Ouvrez `Magasin.sln` dans Visual Studio.
 3. Lancez le projet avec `F5`.
    
