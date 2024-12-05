@@ -3,6 +3,9 @@ namespace Magasin
     public partial class MainWindow : Form
     {
         private List<Article> articles;
+        private List<Commande> commandes = new List<Commande>();
+        private Panier panier = new Panier();
+
 
         public MainWindow()
         {
@@ -50,15 +53,12 @@ namespace Magasin
         {
             if (listBox1.SelectedIndex != -1)
             {
-                // Récupérer l'article sélectionné
                 var article = articles[listBox1.SelectedIndex];
 
-                // Ouvrir le formulaire de modification avec les données de l'article
                 using (var form = new AjoutArticleForm(article))
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        // Récupérer les nouvelles données de l'article
                         var updatedArticle = form.Tag as Article;
                         if (updatedArticle != null)
                         {
@@ -66,7 +66,7 @@ namespace Magasin
                             article.Prix = updatedArticle.Prix;
                             article.Quantite = updatedArticle.Quantite;
 
-                            // Mettre à jour l'affichage
+
                             AfficherArticles();
                         }
                     }
@@ -86,6 +86,7 @@ namespace Magasin
 
             btnModifierArticle.Visible = isItemSelected;
             btnSupprimerArticle.Visible = isItemSelected;
+            BtnAjouterAuPanier.Visible = isItemSelected;
         }
 
 
@@ -107,9 +108,64 @@ namespace Magasin
         }
 
 
+
+        private void BtnVoirPanier_Click(object sender, EventArgs e)
+        {
+            using (var form = new PanierForm(panier))
+            {
+                form.CommandeValidee += AjouterCommandeHistorique;
+                form.ShowDialog();
+            }
+        }
+
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
             AfficherArticles();
         }
+
+        private void BtnAjouterAuPanier_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                var article = articles[listBox1.SelectedIndex];
+
+                // Demander la quantité
+                string input = Prompt.ShowDialog("Entrez la quantité :", "Ajouter au panier");
+                if (int.TryParse(input, out int quantite) && quantite > 0)
+                {
+                    panier.AjouterArticle(article, quantite);
+                    MessageBox.Show($"{quantite} x {article.Nom} ont été ajoutés au panier.", "Panier", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez entrer une quantité valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un article à ajouter au panier.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void AjouterCommandeHistorique(Commande commande)
+        {
+            commandes.Add(commande);
+        }
+
+        private void btnVoirHistorique_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnVoirHistorique_Click(object sender, EventArgs e)
+        {
+            using (var form = new HistoriqueForm(commandes))
+            {
+                form.ShowDialog();
+            }
+        }
+
     }
 }
