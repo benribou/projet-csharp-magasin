@@ -59,6 +59,7 @@
             txtPrix.Name = "txtPrix";
             txtPrix.Size = new Size(187, 23);
             txtPrix.TabIndex = 3;
+            txtPrix.TextChanged += txtPrix_TextChanged;
             // 
             // label1
             // 

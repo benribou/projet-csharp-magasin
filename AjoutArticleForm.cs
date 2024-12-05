@@ -50,6 +50,11 @@ namespace Magasin
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void txtPrix_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
